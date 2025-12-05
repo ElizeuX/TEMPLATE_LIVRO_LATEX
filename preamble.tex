@@ -1,0 +1,48 @@
+% preamble.tex
+
+% Codificação & língua
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=* , brazilian]{babel}
+\usepackage{lmodern}
+
+% Layout
+\usepackage{geometry}
+\geometry{
+  a5paper,
+  inner=25mm,
+  outer=20mm,
+  top=20mm,
+  bottom=25mm
+}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{epigraph}
+\usepackage{lipsum}
+
+% Epígrafe mais bonitinha
+\setlength{\epigraphwidth}{0.7\textwidth}
+\setlength{\epigraphrule}{0pt}
+
+% Capítulos um pouco mais destacados (sem pacote exótico)
+\usepackage{titlesec}
+\titleformat{\chapter}
+  {\normalfont\huge\bfseries}
+  {\thechapter}{1em}{}
+
+% Quebra de parágrafo
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.4em}
+
+% Informações do livro (você pode sobrescrever no main.tex se quiser)
+\newcommand{\booktitle}{Título do Romance}
+\newcommand{\booksubtitle}{Subtítulo opcional}
+\newcommand{\bookauthor}{Seu Nome}
+\newcommand{\bookpublisher}{Editora Qualquer}
+\newcommand{\bookyear}{2025}
+\newcommand{\bookisbn}{978-0-00-000000-0}

@@ -1,0 +1,48 @@
+name: Compilar livro (PDF e DOCX)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-book:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Compilar LaTeX (PDF)
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          # Se um dia quiser XeLaTeX, ativar:
+          # latexmk_use_xelatex: true
+
+      - name: Instalar pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Converter main.tex para DOCX
+        run: |
+          pandoc main.tex \
+            --from=latex \
+            --to=docx \
+            -s \
+            -o livro.docx
+
+      - name: Upload do PDF
+        uses: actions/upload-artifact@v5
+        with:
+          name: livro-pdf
+          path: main.pdf
+
+      - name: Upload do DOCX
+        uses: actions/upload-artifact@v5
+        with:
+          name: livro-docx
+          path: livro.docx

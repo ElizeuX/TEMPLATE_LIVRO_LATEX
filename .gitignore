@@ -1,0 +1,50 @@
+# Arquivos auxiliares do LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.acn
+*.acr
+*.alg
+
+# Arquivos gerados por latexmk
+*.dvi
+*.ps
+*.pdf
+
+# Diretórios temporários usados por ferramentas
+latex.out/
+build/
+temp/
+_*.tex
+
+# Arquivos de preview no VS Code
+*.pdf_tex
+
+# Arquivos do pacote minted (se usar)
+_minted*
+
+# Logs e lixo geral
+*.nav
+*.snm
+*.vrb
+
+# Arquivos do TeXstudio, TeXmaker, etc (caso use)
+*.bak
+*.backup
+
+# Pasta de Releases (não versionar PDFs finais)
+08_Releases/

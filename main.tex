@@ -1,0 +1,60 @@
+% main.tex
+\documentclass[12pt,openany]{book}
+
+\input{preamble}
+
+\title{\booktitle}
+\author{\bookauthor}
+\date{\bookyear}
+
+\begin{document}
+
+% ---------- FRONTMATTER ----------
+\frontmatter
+
+% Capa “interna”
+\input{frontmatter/capa}
+
+% Folha de rosto
+\input{frontmatter/folha-rosto}
+
+% Página de direitos autorais
+\input{frontmatter/copyrightpage}
+
+% Dedicatória (opcional)
+\input{frontmatter/dedicatoria}
+
+% Epígrafe (opcional)
+\input{frontmatter/epigrafe}
+
+% Sumário
+\tableofcontents
+
+% ---------- MAINMATTER ----------
+\mainmatter
+
+
+\input{content/capitulo_01}
+\input{content/capitulo_02}
+\input{content/capitulo_03}
+
+% Adicione mais capítulos conforme necessário
+% \chapter{Capítulo Três}
+% \input{chapters/cap03}
+
+% ---------- BACKMATTER ----------
+\backmatter
+
+\chapter*{Posfácio}
+\addcontentsline{toc}{chapter}{Posfácio}
+\input{backmatter/posfacio}
+
+\chapter*{Agradecimentos}
+\addcontentsline{toc}{chapter}{Agradecimentos}
+\input{backmatter/agradecimentos}
+
+\chapter*{Notas}
+\addcontentsline{toc}{chapter}{Notas}
+\input{backmatter/notas}
+
+\end{document}
