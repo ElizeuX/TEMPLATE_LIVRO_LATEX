@@ -53,3 +53,4 @@ Para dúvidas ou conversas sobre o projeto:
 **Autor:** Xavier
 **Tema:** Desenvolvimento e revisão do romance *A Paixão segundo Miguel*
 
+# TEMPLATE_LIVRO_LATEX
