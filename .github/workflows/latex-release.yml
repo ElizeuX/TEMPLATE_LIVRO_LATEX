@@ -1,0 +1,51 @@
+name: LaTeX – release (tag)
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Debug ref
+        run: |
+          echo "github.event_name = ${{ github.event_name }}"
+          echo "github.ref        = ${{ github.ref }}"
+          echo "github.ref_name   = ${{ github.ref_name }}"
+
+      - name: Checkout na tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compilar LaTeX (PDF)
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+
+      - name: Instalar pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Gerar DOCX
+        run: |
+          pandoc main.tex -s -o livro.docx
+
+      - name: Criar Release e anexar PDF/DOCX
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            main.pdf
+            livro.docx
