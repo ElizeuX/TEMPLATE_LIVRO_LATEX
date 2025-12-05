@@ -1,56 +1,48 @@
-![FRENÊSI LITERÁRIO Ok](https://img.shields.io/badge/FRENÊSI%20LITERÁRIO™-ok-FF1493?style=flat&logo=checkmarx) ![Revisão PT_BR Ok](https://img.shields.io/badge/Revisao_PT_BR-ok-FF1493?style=flat&logo=checkmarx)  ![ALPHA Pending](https://img.shields.io/badge/Alpha-Pending-999999?logo=checkmarx&logoColor=white) ![Voz alta](https://img.shields.io/badge/Voz_alta-Pending-999999?logo=checkmarx&logoColor=white) ![BETA Pending](https://img.shields.io/badge/Beta-Pending-999999?logo=checkmarx&logoColor=white) ![Editor Pending](https://img.shields.io/badge/Editor-Pending-999999?logo=checkmarx&logoColor=white) ![Publicado Pending](https://img.shields.io/badge/Publicado-Pending-999999?logo=rocket&logoColor=white)
+ ![ALPHA ok](https://img.shields.io/badge/Alpha-ok-FF1493?logo=checkmarx) ![BETA Pending](https://img.shields.io/badge/Beta-Pending-999999?logo=checkmarx&logoColor=white) ![Version final](https://img.shields.io/badge/Versão-final-999999?logo=rocket&logoColor=white)
 
-# A Paixão segundo Miguel
+# 📚 Template de Livro em LaTeX
 
-Bem-vindo ao repositório oficial do romance **A Paixão segundo Miguel**, de Elizeu Xavier.
-Este projeto reúne organização, versões, capítulos, anotações e arquivos de apoio utilizados durante o desenvolvimento do livro.
+Este repositório contém um **template completo de livro em LaTeX**, pensado para autores que querem organizar o manuscrito de forma profissional, com foco em:
 
----
+- Livros de ficção ou não ficção
+- Versões para impressão e PDF digital
+- Textos em português (Brasil)
 
-## 📘 Sobre o Romance
-
-**A Paixão segundo Miguel** acompanha a jornada de Miguel, um padre e oficial da Polícia Militar de São Paulo, colocado no centro de uma espiral de violência, mistério e fenômenos que desafiam tanto a razão quanto a fé.
-Entre batalhões, ruas da capital, rituais, crises espirituais e políticas, o romance explora a colisão entre o sagrado e o profano, investigando o preço psicológico e humano de enfrentar o mal quando ele decide vestir carne.
+> Use este template como base para seus projetos de livro, ajustando apenas o conteúdo e alguns detalhes de configuração.
 
 ---
 
-## 🗂 Estrutura do Repositório
+## ✨ Recursos do template
 
-- **/capitulos**
-  Versões organizadas dos capítulos, divididas por datas e revisões.
-
-- **/referencias**
-  Textos, citações, pesquisas históricas e materiais que fundamentam a narrativa.
-
-- **/planejamento**
-  Estruturas de arco, cronogramas, documentos de worldbuilding e organização interna.
-
-- **/prologo**
-  Versões do prólogo do romance.
-
-- **/outros**
-  Fragmentos, rascunhos, ideias soltas e materiais auxiliares de escrita.
+- Estrutura organizada em capítulos
+- Metadados do livro configuráveis (`autor`, `título`, `editora`, `ano`, `ISBN`)
+- Sumário gerado automaticamente
+- Numeração de páginas no estilo livro
+- Suporte a imagens (`graphicx`)
+- Arquivos de configuração separados (preambulo/opções)
+- Estilo consistente para:
+  - Títulos de capítulos e seções
+  - Cabeçalhos e rodapés (via `fancyhdr`, se habilitado)
+  - Quebra de páginas em modo livro (`book` class)
+- Pronto para ser integrado com pipelines de CI (por exemplo, GitHub Actions) para gerar PDF automaticamente a cada commit
 
 ---
 
-## 🛠 Como Contribuir
+## 📁 Estrutura do projeto
 
-Este é um repositório voltado ao desenvolvimento do autor.
-Sugestões podem ser feitas via *issues* ou *pull requests*, desde que sigam o padrão de organização do projeto.
+Um exemplo de estrutura (ajuste de acordo com seu repositório):
 
----
-
-## 📄 Licença
-
-Todos os direitos reservados.
-O conteúdo deste repositório não pode ser distribuído, reproduzido ou adaptado sem autorização expressa do autor.
-
----
-
-## ✉ Contato
-
-Para dúvidas ou conversas sobre o projeto:
-**Autor:** Xavier
-**Tema:** Desenvolvimento e revisão do romance *A Paixão segundo Miguel*
-
-# TEMPLATE_LIVRO_LATEX
+```text
+.
+├── main.tex               # Arquivo principal do livro
+├── misc/
+│   ├── preamble.sty       # Preambulo: pacotes e configurações globais
+│   ├── options.sty        # Opções específicas do livro (margens, fonte etc.)
+│   └── ...
+├── chapters/
+│   ├── cap01.tex          # Capítulo 1
+│   ├── cap02.tex          # Capítulo 2
+│   └── ...
+├── assets/
+│   └── img/               # Imagens usadas no livro
+└── README.md
