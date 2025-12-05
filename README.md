@@ -5,7 +5,7 @@
 Este repositório contém um **template completo de livro em LaTeX**, pensado para autores que querem organizar o manuscrito de forma profissional, com foco em:
 
 - Livros de ficção ou não ficção
-- Versões para impressão e PDF digital
+- Versões para impressão, PDF digital e DOCX
 - Textos em português (Brasil)
 
 > Use este template como base para seus projetos de livro, ajustando apenas o conteúdo e alguns detalhes de configuração.

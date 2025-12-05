@@ -12,16 +12,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  # ----------------------------------------------------------
-  # JOB 1: push normal na main -> compila e commita artefatos
-  # ----------------------------------------------------------
   build-and-commit:
-    if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+    if: ${{ github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/') }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do repositório
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -36,15 +32,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Gerar DOCX a partir do main.tex
+      - name: Gerar DOCX
         run: |
-          pandoc main.tex \
-            --from=latex \
-            --to=docx \
-            -s \
-            -o livro.docx
+          pandoc main.tex -s -o livro.docx
 
-      - name: Commit dos artefatos (PDF + DOCX)
+      - name: Commit PDF + DOCX
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -61,25 +53,19 @@ jobs:
           git commit -m "chore: atualiza artefatos LaTeX [skip ci]"
           git push
 
-  # ----------------------------------------------------------
-  # JOB 2: push de TAG (v*) -> compila e cria release (sem commit)
-  # ----------------------------------------------------------
   build-and-release:
-    if: ${{ startsWith(github.ref, 'refs/tags/') }}
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Debug ref
         run: |
-          echo "github.ref = ${{ github.ref }}"
+          echo "github.ref      = ${{ github.ref }}"
           echo "github.ref_name = ${{ github.ref_name }}"
-          echo "github.ref_type = ${{ github.ref_type }}"
 
-      - name: Checkout do repositório (na tag)
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
 
       - name: Compilar LaTeX (PDF)
         uses: xu-cheng/latex-action@v4
@@ -91,17 +77,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Gerar DOCX a partir do main.tex
+      - name: Gerar DOCX
         run: |
-          pandoc main.tex \
-            --from=latex \
-            --to=docx \
-            -s \
-            -o livro.docx
+          pandoc main.tex -s -o livro.docx
 
-      - name: Criar Release e anexar PDF/DOCX
+      - name: Criar Release
         uses: softprops/action-gh-release@v2
-        if: ${{ github.ref_type == 'tag' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
