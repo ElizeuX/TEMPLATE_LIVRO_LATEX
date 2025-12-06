@@ -4,8 +4,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[provide=* , brazilian]{babel}
-\usepackage{lmodern}
-\usepackage{lipsum} % fixes \lipsum
+\usepackage{ebgaramond}
+\usepackage{microtype}
+\linespread{1.05} % opcional
+
+%\usepackage{lipsum} % fixes \lipsum
+
+
+
 % Layout
 \usepackage{geometry}
 \geometry{
@@ -25,15 +31,43 @@
 \usepackage{epigraph}
 \usepackage{lipsum}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+% limpa qualquer coisa padrão
+\fancyhf{}
+
+% Páginas PARES (odd, direita): nome do autor, centralizado
+\fancyhead[CE]{\normalfont\itshape\normalsize\bookauthor}
+
+% Páginas ÍMPARES (even, esquerda): título do livro, centralizado
+\fancyhead[CO]{\normalfont\itshape\normalsize\booktitle}
+
+
+% Número da página centralizado no rodapé em todas
+\fancyfoot[CE,CO]{\thepage}
+
+% Sem linha no cabeçalho e no rodapé
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
 % Epígrafe mais bonitinha
 \setlength{\epigraphwidth}{0.7\textwidth}
 \setlength{\epigraphrule}{0pt}
 
 % Capítulos um pouco mais destacados (sem pacote exótico)
+%\usepackage{titlesec}
+%\titleformat{\chapter}
+%  {\normalfont\huge\bfseries}
+%  {\thechapter}{1em}{}
+% Capítulos: só o número, sem título
 \usepackage{titlesec}
-\titleformat{\chapter}
-  {\normalfont\huge\bfseries}
-  {\thechapter}{1em}{}
+\titleformat{\chapter}[display] % 'display' = estilo em bloco
+  {\normalfont\huge\bfseries\centering}   % formatação do número
+  {\thechapter}                 % o que aparece (apenas o número)
+  {0pt}                         % espaço entre número e "título"
+  {}                            % nada depois do número (ignora o texto do \chapter)
 
 % Quebra de parágrafo
 \setlength{\parindent}{1.5em}

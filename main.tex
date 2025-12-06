@@ -1,11 +1,19 @@
 % main.tex
-\documentclass[12pt,openany]{book}
+\documentclass[12pt,openany,twoside]{book}
+
 
 \input{preamble}
 
 \title{\booktitle}
 \author{\bookauthor}
 \date{\bookyear}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}% limpa tudo
+  \fancyfoot[C]{\thepage}% só número da página no rodapé, por exemplo
+  \renewcommand{\headrulewidth}{0pt}% sem linha no topo
+}
+
 
 \begin{document}
 
@@ -28,7 +36,7 @@
 \input{frontmatter/epigrafe}
 
 % Sumário
-\tableofcontents
+%\tableofcontents
 
 % ---------- MAINMATTER ----------
 \mainmatter
